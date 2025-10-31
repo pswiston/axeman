@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://ro4we47ejfyk"]
+
+[ext_resource type="Script" uid="uid://djsmghbvktpml" path="res://Script/axe_hitbox.gd" id="1_jhy6c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jhy6c"]
+radius = 26.019224
+
+[node name="AxeHitbox" type="Area2D"]
+script = ExtResource("1_jhy6c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jhy6c")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
